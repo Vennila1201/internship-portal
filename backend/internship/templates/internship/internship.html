@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Internship Program | Apply Now</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f7f9fc;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+      padding: 20px;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 1;
+    }
+
+    .hero-content {
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    .hero a {
+      display: inline-block;
+      padding: 12px 30px;
+      background: #2575fc;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .hero a:hover {
+      background: #1b5fc5;
+      transform: scale(1.05);
+    }
+
+    /* --- About Section --- */
+    .about {
+      padding: 80px 20px;
+      text-align: center;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .about h2 {
+      color: #2575fc;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    .about p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    /* --- Form Section --- */
+    .form-section {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      padding: 80px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 30px;
+      margin: 20px auto;
+      border-radius: 15px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+      position: relative;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2575fc;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    textarea { resize: none; }
+
+    button {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+      color: white;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #1b5fc5, #4c0fbf);
+    }
+
+    /* --- Footer --- */
+    footer {
+      background: #222;
+      color: #ccc;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .social-links a {
+      margin: 0 10px;
+      color: #ccc;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #2575fc;
+    }
+
+    /* --- Popup --- */
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .popup {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      animation: scaleUp 0.3s ease;
+    }
+
+    .popup h3 {
+      margin-bottom: 15px;
+      color: #2575fc;
+    }
+
+    .popup button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      background: #2575fc;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .popup button:hover {
+      background: #1b5fc5;
+    }
+
+    @keyframes scaleUp {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* --- Loading Spinner --- */
+    .spinner-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255,255,255,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #ccc;
+      border-top: 5px solid #2575fc;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Join Our Internship Program 🚀</h1>
+      <p>Gain real-world experience, work with experts, and shape your career.</p>
+      <a href="#apply">Apply Now</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about">
+    <h2>About Our Internship</h2>
+    <p>
+      Our internship program is designed for passionate learners who want to grow their
+      skills in software development, design, and innovation. You’ll work on real projects,
+      collaborate with mentors, and gain valuable experience to prepare you for your career.
+    </p>
+  </section>
+
+  <!-- Application Form Section -->
+  <section class="form-section" id="apply">
+    <div class="form-container">
+      <h2>Apply Now</h2>
+      <form id="internshipForm" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+        <input type="file" name="resume" required>
+        <textarea name="message" placeholder="Why should we hire you?" rows="4"></textarea>
+        <button type="submit">Submit Application</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Success Popup -->
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup">
+      <h3>✅ Application Submitted!</h3>
+      <p>Thank you for applying. Our team will contact you soon.</p>
+      <button onclick="closePopup()">OK</button>
+    </div>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div class="spinner-overlay" id="spinnerOverlay">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Your Company | Internship Program</p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+      <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+  </footer>
+
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- Script -->
+  <script>
+    const form = document.getElementById("internshipForm");
+    const popupOverlay = document.getElementById("popupOverlay");
+    const spinnerOverlay = document.getElementById("spinnerOverlay");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      let formData = new FormData(e.target);
+
+      // Show spinner
+      spinnerOverlay.style.display = "flex";
+
+      try {
+        let response = await fetch("{% url 'apply' %}", {
+          method: "POST",
+          body: formData
+        });
+
+        let result = await response.json();
+
+        // Hide spinner
+        spinnerOverlay.style.display = "none";
+
+        if (result.message) {
+          popupOverlay.style.display = "flex";  // Show popup
+          form.reset(); // Clear form
+        } else {
+          alert(result.error || "Something went wrong!");
+        }
+      } catch (err) {
+        spinnerOverlay.style.display = "none";
+        alert("Error submitting form. Try again later.");
+      }
+    });
+
+    function closePopup() {
+      popupOverlay.style.display = "none";
+    }
+  </script>
+</body>
+</html>
